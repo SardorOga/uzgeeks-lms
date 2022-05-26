@@ -33,6 +33,7 @@ class UserCourseController extends \yii\rest\Controller
     public function actionIndex()
     {
         $searchModel = new UserCourseSearch();
+        $searchModel->user_id = \Yii::$app->user->identity->id;
         $dataProvider = $searchModel->search(\Yii::$app->request->getQueryParams());
         return $dataProvider;
     }
